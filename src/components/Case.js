@@ -12,27 +12,31 @@ export default class Case extends Component {
 
 	render() {
 		const store = this.store;
-		return (
-			<div className="case">
-					{
-						data.find(function(eachCase){
-							for (var n = 0; n < data.length; n++) {
-								if (data[n].caseUid == this.store.id) {
-									return (
-										<ul>
-											<li>{data.reference}</li>
-											<li>{eachCase.accountId}</li>
-											<li>{eachCase.caseUid}</li>
-											<li>{eachCase.creationDate}</li>
-											<li>{eachCase.publicId}</li>
-											<li>{eachCase.status}</li>
-										</ul>
-									);
+		if (this.store.authenticated) {
+			return (
+				<div className="case">
+					<Header/>
+						{
+							data.find(function(eachCase){
+								for (var n = 0; n < data.length; n++) {
+									if (data[n].caseUid == this.store.id) {
+										return (
+											<ul>
+												<li>{data.reference}</li>
+												<li>{eachCase.accountId}</li>
+												<li>{eachCase.caseUid}</li>
+												<li>{eachCase.creationDate}</li>
+												<li>{eachCase.publicId}</li>
+												<li>{eachCase.status}</li>
+											</ul>
+										);
+									}
 								}
-							}
-						})
-					}
-			</div>
-		);
+							})
+						}
+				</div>
+			);
+		}
 	}
 }
+
