@@ -16,41 +16,44 @@ export default class Table extends Component {
     }
 
 	render() {
-		const store = this.store;
-		return (
-			<div className="table">
-				<Header/>
-				<div>
-                    <table>
-                        <thead>
-                            <tr>
-                                <td>reference</td>
-                                <td>accountId</td>
-                                <td>caseUid</td>
-                                <td>creationDate</td>
-                                <td>publicId</td>
-                                <td>status</td>
-                            </tr>
-                        </thead>
-                        <tbody>
-                        {
-                            data.map(function(eachCase){
-                                return (
-                                    <tr>
-                                        <td>{data.reference}<Link onClick={this.chooseId} to={`${this.props.match.path}/${eachCase.caseUid}`}/></td>
-                                        <td>{eachCase.accountId}</td>
-                                        <td>{eachCase.caseUid}</td>
-                                        <td>{eachCase.creationDate}</td>
-                                        <td>{eachCase.publicId}</td>
-                                        <td>{eachCase.status}</td>
-                                    </tr>
-                                );
-                            })
-                        }
-                        </tbody>
-                    </table>
+        const store = this.store;
+        if (this.store.authenticated) {
+            return (
+                <div className="table">
+                    <Header/>
+                    <div>
+                        <table>
+                            <thead>
+                                <tr>
+                                    <td>reference</td>
+                                    <td>accountId</td>
+                                    <td>caseUid</td>
+                                    <td>creationDate</td>
+                                    <td>publicId</td>
+                                    <td>status</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                            {
+                                data.map(function(eachCase){
+                                    return (
+                                        <tr>
+                                            <td>{data.reference}<Link onClick={this.chooseId} to={`${this.props.match.path}/${eachCase.caseUid}`}/></td>
+                                            <td>{eachCase.accountId}</td>
+                                            <td>{eachCase.caseUid}</td>
+                                            <td>{eachCase.creationDate}</td>
+                                            <td>{eachCase.publicId}</td>
+                                            <td>{eachCase.status}</td>
+                                        </tr>
+                                    );
+                                })
+                            }
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
-			</div>
-		);
-	}
+            );
+        }
+    }
+    
 }
