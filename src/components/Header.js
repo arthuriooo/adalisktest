@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import { inject, observer } from "mobx-react";
 import { Link, withRouter } from "react-router-dom";
-
 import Button from "./ui/Button";
 import AppState from "../stores/AppState";
 
